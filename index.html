@@ -2,15 +2,21 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title name="title"></title>
+        <title id="title"></title>
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
         <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="app.css" />
     </head>
     <body>
-        <h1>Test de tarduction ici mes p'tites chates</h1>
-        <h2>Langue utilisée par le navigateur : <i>Français</i></h2>
+        <h1 id="main_one"></h1>
+        <div class="line-text">
+            <h2 id="main_two"></h2>
+            <h2 id="main_two_sub"></h2>
+        </div>
+        <h2 id="insult"></h2>
 
-        <h2>Ici j'insulte vos grands morts</h2>
+        <button type="button" id="fr-button">French</button>
+        <button type="button" id="en-button">English</button>
     </body>
     <script type="module" src="./app.js"></script>
 </html>

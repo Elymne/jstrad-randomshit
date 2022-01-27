@@ -1,7 +1,21 @@
 const LANG_FOLDER = './modules/langs'
+const FR = 'fr-FR'
+const EN = 'en-US'
 
+/**
+ * Basic function that will search you default browser language to set the correct traduction.
+ */
 const load = async () => {
-    loadLanguage(await loadJson())
+    loadLanguage(await loadJson(getFileNameByLang(getLangSystem())))
+}
+
+/**
+ * Second function to set you lang by user action.
+ * J'suis un bouf mdr.
+ * @param {*} lang
+ */
+const loadBySelectedLang = async (lang) => {
+    loadLanguage(await loadJson(getFileNameByLang(lang)))
 }
 
 const getLangSystem = () => navigator.language || navigator.userLanguage
@@ -9,17 +23,18 @@ const getLangSystem = () => navigator.language || navigator.userLanguage
 const getFileNameByLang = (lang) => {
     if (lang == 'en-US') return '/en.json'
     if (lang == 'fr-FR') return '/fr.json'
-    return 'en.json'
+    return '/en.json'
 }
 
-const loadJson = async () => {
-    return (await fetch(LANG_FOLDER + getFileNameByLang(getLangSystem()))).json()
+const loadJson = async (lang) => {
+    return (await fetch(LANG_FOLDER + lang)).json()
 }
 
 const loadLanguage = (langObj) => {
     for (const key in langObj) {
-        console.log(`${key} : ${langObj[key]}`)
+        if (document.getElementById(key) == null) return
+        document.getElementById(key).innerHTML = langObj[key]
     }
 }
 
-export { load }
+export { load, loadBySelectedLang, FR, EN }
