@@ -1,6 +1,16 @@
-const LANG_FOLDER = './modules/langs'
+const LANG_FOLDER = './modules/langManager/langs'
 const FR = 'fr-FR'
 const EN = 'en-US'
+
+/**
+ *
+ * @param {Array} langs
+ * @param {*} onLangCharged
+ */
+const loadCustomLang = (langData, insult) => {
+    loadLanguage(langData)
+    insult('LA VIVIDA')
+}
 
 /**
  * Basic function that will search you default browser language to set the correct traduction.
@@ -37,4 +47,4 @@ const loadLanguage = (langObj) => {
     }
 }
 
-export { load, loadBySelectedLang, FR, EN }
+export { load, loadBySelectedLang, loadCustomLang, FR, EN }
